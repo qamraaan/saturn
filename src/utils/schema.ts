@@ -14,6 +14,7 @@ export const registerSchema = Yup.object().shape({
   address: Yup.string().required('Address is required'),
   postCode: Yup.string()
     .matches(/^[0-9]+$/, 'Postcode must contain only numbers')
+    .min(3, 'Postcode must be at least 3 digits')
     .max(8, 'Postcode must be at most 8 digits')
     .required('Postcode is required'),
   phone: Yup.string()

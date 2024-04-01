@@ -100,7 +100,7 @@ const EmployeesList = () => {
     (eV: string) => {
       if (eV !== undefined) setQuery(eV);
     },
-    1000,
+    300,
     [handleSearch],
   );
 
