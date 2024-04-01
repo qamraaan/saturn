@@ -1,0 +1,18 @@
+export const AppFonts = {
+  SourceSansBlack: 'SourceSans3-Black',
+  SourceSansBlackItalic: 'SourceSans3-BlackItalic',
+  SourceSansBold: 'SourceSans3-Bold',
+  SourceSansBoldItalic: 'SourceSans3-BoldItalic',
+  SourceSansExtraBold: 'SourceSans3-ExtraBold',
+  SourceSansExtraBoldItalic: 'SourceSans3-ExtraBoldItalic',
+  SourceSansExtraLight: 'SourceSans3-ExtraLight',
+  SourceSansExtraLightItalic: 'SourceSans3-ExtraLightItalic',
+  SourceSansItalic: 'SourceSans3-Italic',
+  SourceSansLight: 'SourceSans3-Light',
+  SourceSansLightItalic: 'SourceSans3-LightItalic',
+  SourceSansMedium: 'SourceSans3-Medium',
+  SourceSansMediumItalic: 'SourceSans3-MediumItalic',
+  SourceSansRegular: 'SourceSans3-Regular',
+  SourceSansSemiBold: 'SourceSans3-SemiBold',
+  SourceSansSemiBoldItalic: 'SourceSans3-SemiBoldItalic',
+};
