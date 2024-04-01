@@ -11,7 +11,7 @@ export const EmptyComponent = () => (
       <CustomText
         textAlign={'center'}
         fontFamily={AppFonts.SourceSansRegular}
->        You haven’t added any employees yet.
+>        No employees found.
       </CustomText>
   </View>
 );

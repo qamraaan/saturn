@@ -29,11 +29,8 @@ const EmployeesList = () => {
     store => store.persistedReducer.employeeList,
   );
 
+  const [filteredEmployees, setFilteredEmployees] = useState(employees);
   const [query, setQuery] = useState('');
-  // const handleSearch = useCallback((searchText: string) => {
-  //   setQuery(searchText ?? '');
-  // }, []);
-
 
   //function to render to employees
   const renderItem = ({item, index}: {item: Employee; index: number}) => (
@@ -56,20 +53,20 @@ const EmployeesList = () => {
       style={{
         rowGap: spacing.xxs,
         marginVertical: spacing.xxs,
+        paddingHorizontal: spacing.s
       }}>
       <Header title="Employees" />
-      {/* <CustomSearch placeholder="Search employees" onChange={handleSearch} /> */}
+      <CustomSearch placeholder="Search employees" onChange={handleSearch} value={query} />
     </View>
   );
 
   //function to render the footer
   const renderFooter = () => {
-    if (employees?.length === 0) {
+    if (filteredEmployees?.length === 0) {
       return null;
     } else if (loading) {
       return <ActivityIndicator color={colors.linkColor} />;
-    } else if (employees?.length === 100) {
-      //replace with count
+    } else if (filteredEmployees?.length === 100) {
       return (
         <View
           style={{
@@ -82,42 +79,39 @@ const EmployeesList = () => {
       return null;
     }
   };
+  
+  // function to search a user by firstName, lastName and email
+    const handleSearch = useCallback((searchText: string) => {
+    setQuery(searchText ?? ''); 
+    const filteredData = employees?.filter((employee) => {
+      const normalizedSearchTerm = searchText?.toLowerCase();
+      const normalizedName = `${employee?.name?.first} ${employee?.name?.last}`.toLowerCase();
+      const normalizedEmail = employee.email?.toLowerCase();
+      return (
+        normalizedName?.includes(normalizedSearchTerm) ||
+        normalizedEmail?.includes(normalizedSearchTerm)
+      );
+    });
+    setFilteredEmployees(filteredData);
+  }, [employees]);
+
+
+  useDebounce(
+    (eV: string) => {
+      if (eV !== undefined) setQuery(eV);
+    },
+    1000,
+    [handleSearch],
+  );
 
   const handlePress = () => {
     navigation.navigate(navigationStrings.REGISTER);
   };
   const keyExtractor = () => uuid.v4().toString();
-    const [filteredEmployees, setFilteredEmployees] = useState(employees);
-
-  // const handleSearch = useCallback((searchText: string) => {
-  //   setQuery(searchText ?? '');
-  //   const filteredData = employees?.filter((employee) => {
-  //     const normalizedSearchTerm = searchText?.toLowerCase();
-  //     const normalizedName = `${employee?.name?.first} ${employee?.name?.last}`.toLowerCase();
-  //     const normalizedEmail = employee.email?.toLowerCase();
-
-  //     return (
-  //       normalizedName?.includes(normalizedSearchTerm) ||
-  //       normalizedEmail?.includes(normalizedSearchTerm)
-  //     );
-  //   });
-  //   setFilteredEmployees(filteredData);
-  // }, [employees]);
-
-  //   useDebounce(
-  //   (eV: string) => {
-  //     if (eV !== undefined) setQuery(eV);
-  //   },
-  //   1000,
-  //   [handleSearch],
-  // );
-
-  // useDebounce(handleSearch, 1000, [query]);
-
   return (
     <CustomLayout
       style={{
-        backgroundColor: colors.appBackgroundColor,
+        backgroundColor: colors.appBackgroundColor
       }}>
       {loading ? (
         <View
@@ -130,6 +124,7 @@ const EmployeesList = () => {
         </View>
       ) : (
         <>
+        {renderHeader()}
           <FlatList
             keyboardShouldPersistTaps="never"
             removeClippedSubviews={true}
@@ -141,16 +136,15 @@ const EmployeesList = () => {
               paddingHorizontal: spacing.s,
               paddingBottom: spacing.s,
             }}
-            data={employees}
+            data={filteredEmployees}
             renderItem={renderItem}
-            ListHeaderComponent={renderHeader}
             ListFooterComponent={renderFooter}
             ListEmptyComponent={EmptyComponent}
           />
           <View
             style={{
               alignItems: 'center',
-              margin: spacing.s,
+              marginBottom: spacing.s,
             }}>
             <CustomButton
               label="Add new employee"

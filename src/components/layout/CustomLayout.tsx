@@ -16,7 +16,7 @@ const CustomLayout: React.FC<CustomLayoutProps> = ({children, style}) => {
     <SafeAreaView style={[{flex: 1}, style]}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{flex: 1}}>
+        style={{flex: 1,}}>
             {children}
       </KeyboardAvoidingView>
     </SafeAreaView>

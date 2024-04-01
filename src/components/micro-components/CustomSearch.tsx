@@ -7,13 +7,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 interface CustomSearchProps {
   onChange: ((text: string) => void) | undefined;
   placeholder?: string;
+  value: string;
 }
 
 const CustomSearch: React.FC<CustomSearchProps> = ({
   onChange,
   placeholder = 'Search',
+  value,
 }) => {
   const theme = useTheme<Theme>();
+  console.log('aafadf')
   const {colors, fontSize, borderRadii, spacing} = theme;
   const styles = StyleSheet.create({
     container: {
@@ -42,6 +45,7 @@ const CustomSearch: React.FC<CustomSearchProps> = ({
     <View style={styles.container}>
       <TextInput
         onChangeText={onChange}
+        value={value}
         placeholder={placeholder}
         placeholderTextColor={colors.textGray}
         style={styles.textInput}

@@ -1,79 +1,85 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+### React Native App with TypeScript, RTK Query, and Shopify Restyle
 
-# Getting Started
+This is a React Native mobile application scaffolded with TypeScript, utilizing Redux Toolkit Query (RTK Query) for API calls and Shopify Restyle for styling. The app is set up to use the Yarn package manager for dependency management.
+Setup Instructions
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Follow these steps to set up and run the React Native app:
+Prerequisites
+    
+    Node.js (>=18) and npm installed globally on your machine.
+    Yarn package manager installed globally (npm install -g yarn).
+    Xcode installed for iOS development (macOS only).
+    Android Studio installed for Android development.
 
-## Step 1: Start the Metro Server
+Installation
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+  Clone the repository to your local machine:
 
-To start Metro, run the following command from the _root_ of your React Native project:
+    git clone https://github.com/qamraaan/saturn.git
 
-```bash
-# using npm
-npm start
+Navigate to the project directory:
 
-# OR using Yarn
-yarn start
-```
 
-## Step 2: Start your Application
+    cd EmployeeDirectory
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Install dependencies using Yarn:
 
-### For Android
 
-```bash
-# using npm
-npm run android
+    yarn
 
-# OR using Yarn
-yarn android
-```
+Starting Metro Server
 
-### For iOS
+The Metro bundler is responsible for compiling your JavaScript code and serving it to your app. To start the Metro server:
 
-```bash
-# using npm
-npm run ios
 
-# OR using Yarn
-yarn ios
-```
+    yarn start
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Installing Pods
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+If you're targeting iOS, you need to install CocoaPods dependencies:
 
-## Step 3: Modifying your App
+    cd ios && pod install && cd ..
 
-Now that you have successfully run the app, let's modify it.
+Running the App
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+iOS
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+To run the app on an iOS simulator or device, run:
 
-## Congratulations! :tada:
+    yarn ios
 
-You've successfully run and modified your React Native App. :partying_face:
+Android
 
-### Now what?
+To run the app on an Android emulator or device, run:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
+    yarn android
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Features
 
-# Learn More
+    React Native framework for building cross-platform mobile applications.
+    TypeScript for type-checking and improved developer experience.
+    RTK Query for efficient and powerful API data fetching.
+    Shopify Restyle for theming.
 
-To learn more about React Native, take a look at the following resources:
+Folder Structure
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+src/
+    components/ Reusable UI components
+    domains/ Application modules
+    layout/ Application layout
+    routes/ Application routes
+    store/ Application global store.
+    theme/ Application theme.
+    types/ Application types
+    slices/ Application slices
+    
+    App.tsx Entry point for the application
+    ... Other files
+    tsconfig.json # TypeScript configuration
+    vite.config.ts # Vite configuration
+    package.json # Project dependencies
+    yarn.lock # Dependency lock file (if using Yarn)
+
+    ios: iOS-specific configuration and code.
+    android: Android-specific configuration and code.
